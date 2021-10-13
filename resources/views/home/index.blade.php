@@ -78,34 +78,7 @@
     </section>
 
 
-    <div class="partner-area bg-color-f9f9f9 ptb-100">
-    <div class="container">
-        <div class="row">
-            <div class="partner-slider-six owl-carousel owl-theme">
-                <div class="partner-item">
-                    <a href="#">
-                        <img src="{{url('public/site')}}/assets/img/home-six/partner/partner-1.png" alt="Image">
-                    </a>
-                </div>
-                <div class="partner-item">
-                    <a href="#">
-                        <img src="{{url('public/site')}}/assets/img/home-six/partner/partner-2.png" alt="Image">
-                    </a>
-                </div>
-                <div class="partner-item">
-                    <a href="#">
-                        <img src="{{url('public/site')}}/assets/img/home-six/partner/partner-3.png" alt="Image">
-                    </a>
-                </div>
-                <div class="partner-item">
-                    <a href="#">
-                        <img src="{{url('public/site')}}/assets/img/home-six/partner/partner-4.png" alt="Image">
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+  
 
     <section class="performance-area bg-none pb-70">
         <div class="container">
