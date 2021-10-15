@@ -12,26 +12,19 @@
                    <div class="row">
                        <div class="col-7">
                             <div class="form-group">
-                                <label for="">Tiêu đề bài viết</label>
+                                <label for="">Tên khách hàng</label>
                                 <input type="text" name="tittle" id="tittle" class="form-control" value="{{old('tittle')?old('tittle'):$data->tittle}}" placeholder="Nhập tiêu đề" aria-describedby="helpId">
                                 @error('tittle')
                                 <small id="helpId" class="text-danger">{{$message}}</small>
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label for="">Mô tả chung</label>
-                                @if($data->get_cat->key_name=='aboutService')
+                                <label for="">Chức vụ</label>
                                 <input type="text" name="summary" value="{{old('summary')?old('summary'):$data->summary}}" placeholder="Nhập mô tả chung"  class="form-control"  aria-describedby="helpId">
-                                @else
-                                <textarea type="text" name="summary" id="editor-ckeditor2" placeholder="Nhập mô tả chung"  class="form-control"  aria-describedby="helpId">{{old('summary')?old('summary'):$data->summary}}</textarea>
-                                @endif
-                                @error('summary')
-                                <small id="helpId" class="text-danger">{{$message}}</small>
-                                @enderror
                             </div>
                           
                             <div class="form-group">
-                                <label for="">Mô tả</label>
+                                <label for="">Phản hồi</label>
                                 <textarea type="text" name="description" id="editor-ckeditor" class="form-control" placeholder="Mô tả bài viết" >{{old('description')?old('description'):$data->description}}</textarea>
                                 @error('description')
                                 <small id="helpId" class="text-danger">{{$message}}</small>

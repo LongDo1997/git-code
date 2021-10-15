@@ -1,3 +1,14 @@
+<?php 
+    $accs = explode(' end_Of_The_Link, ',$data->summary);
+    $fblink= !empty($accs[0])?substr($accs[0],strpos($accs[0],'Facebook: ')+10):"";
+    $instalink= !empty($accs[1])?substr($accs[1],strpos($accs[1],'Instagram: ')+11):"";
+    $twiterlink= !empty($accs[2])?substr($accs[2],strpos($accs[2],'Twiter: ')+8):"";
+    $anotherlink= !empty($accs[3])?substr($accs[3],strpos($accs[3],'Another: ')+9):"";
+    $info = explode(' end_of_contact, ',$data->description);
+    $emailInfo= !empty($info[0])?substr($info[0],strpos($info[0],'Email: ')+7):"";
+    $phoneInfo= !empty($info[1])?substr($info[1],strpos($info[1],'Phone: ')+7):"";
+    $addInfo= !empty($info[2])?substr($info[2],strpos($info[2],'Address: ')+9):"";
+?>
 @extends('master.admin')
 @section('main')
     <div class="container">
@@ -12,30 +23,43 @@
                    <div class="row">
                        <div class="col-7">
                             <div class="form-group">
-                                <label for="">Tiêu đề bài viết</label>
+                                <label for="">Mô tả địa điểm</label>
                                 <input type="text" name="tittle" id="tittle" class="form-control" value="{{old('tittle')?old('tittle'):$data->tittle}}" placeholder="Nhập tiêu đề" aria-describedby="helpId">
                                 @error('tittle')
                                 <small id="helpId" class="text-danger">{{$message}}</small>
                                 @enderror
+                            </div>                               
+                            <input type="hidden" name="summary" value="{{$data->summary}}" placeholder="Nhập mô tả chung"  class="form-control"  aria-describedby="helpId">
+                       
+                            <div class="form-group">
+                                <label for="">Face book</label>
+                                <input type="text" name="facebook" id="" class="form-control" value="{{$fblink}}" placeholder="Nhập link facebook" aria-describedby="helpId">
+                            </div>
+                         
+                            <div class="form-group">
+                                <label for="">Twiter</label>
+                                <input type="text" name="twiter" id="" class="form-control" value="{{$twiterlink}}" placeholder="Nhập link twiter" aria-describedby="helpId">
                             </div>
                             <div class="form-group">
-                                <label for="">Mô tả chung</label>
-                                @if($data->get_cat->key_name=='aboutService')
-                                <input type="text" name="summary" value="{{old('summary')?old('summary'):$data->summary}}" placeholder="Nhập mô tả chung"  class="form-control"  aria-describedby="helpId">
-                                @else
-                                <textarea type="text" name="summary" id="editor-ckeditor2" placeholder="Nhập mô tả chung"  class="form-control"  aria-describedby="helpId">{{old('summary')?old('summary'):$data->summary}}</textarea>
-                                @endif
-                                @error('summary')
-                                <small id="helpId" class="text-danger">{{$message}}</small>
-                                @enderror
+                                <label for="">Instagram</label>
+                                <input type="text" name="insta" id="" class="form-control" value="{{$instalink}}" placeholder="Nhập link Instagram" aria-describedby="helpId">
                             </div>
-                          
                             <div class="form-group">
-                                <label for="">Mô tả</label>
-                                <textarea type="text" name="description" id="editor-ckeditor" class="form-control" placeholder="Mô tả bài viết" >{{old('description')?old('description'):$data->description}}</textarea>
-                                @error('description')
-                                <small id="helpId" class="text-danger">{{$message}}</small>
-                                @enderror
+                                <label for="">Khác</label>
+                                <input type="text" name="another" id="" class="form-control" value="{{$anotherlink}}" placeholder="Nhập link" aria-describedby="helpId">
+                            </div>
+                            <input type="hidden" name="description" value="{{old('description')?old('description'):$data->description}}" class="form-control" placeholder="Mô tả bài viết" >
+                            <div class="form-group">
+                                <label for="">Email</label>
+                                <input type="text" name="email" id="" class="form-control" value="{{$emailInfo}}" placeholder="Nhập link" aria-describedby="helpId">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Số điện thoại</label>
+                                <input type="text" name="phone" id="" class="form-control" value="{{$phoneInfo}}" placeholder="Nhập link" aria-describedby="helpId">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Địa chỉ</label>
+                                <input type="text" name="address" id="" class="form-control" value="{{$addInfo}}" placeholder="Nhập link" aria-describedby="helpId">
                             </div>
                        </div>
                        <div class="col-1"></div>
@@ -108,7 +132,7 @@
                             <small id="helpId" class="text-danger">{{$message}}</small>
                             @enderror
                             </div>
-                            <div class="upload_image" style="height:360px">
+                            <div class="upload_image" style="height:270px">
                                 @if(old('my_file'))
                                 <img class="mr-3 pt-1" src="{{old('my_file')}}" id = "show_img" style="height:250px;width:100%" alt="">
                                 @else

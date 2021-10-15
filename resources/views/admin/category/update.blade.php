@@ -36,7 +36,8 @@
                             </div>
                             <div class="form-group">
                                 <label for="">Mã từ</label>
-                                <input type="text" name="key_name" id="" placeholder="Mã từ" value="{{old('key_name')?old('key_name'):$data->key_name}}" class="form-control"  aria-describedby="helpId">
+                                <input type="text"  name="" disabled="true" id="" placeholder="Mã từ" value="{{old('key_name')?old('key_name'):$data->key_name}}" class="form-control"  aria-describedby="helpId">
+                                <input type="hidden"  name="key_name" id="" placeholder="Mã từ" value="{{old('key_name')?old('key_name'):$data->key_name}}" class="form-control"  aria-describedby="helpId">
                                 @error('key_name')
                                 <small id="helpId" class="text-danger">{{$message}}</small>
                                 @enderror
@@ -86,7 +87,8 @@
                                 <div class="col-8">
                                     <div class="form-group">
                                         <label for="">Đường dẫn</label>
-                                        <input type="text" name="action_name" id="" value="{{old('action_name')?old('action_name'):$data->action_name}}" class="form-control" placeholder="Đường dẫn" >
+                                        <input type="hidden" name="action_name" id="" value="{{old('action_name')?old('action_name'):$data->action_name}}" class="form-control" placeholder="Đường dẫn" >
+                                        <input type="text" name="" disabled="true" id="" value="{{old('action_name')?old('action_name'):$data->action_name}}" class="form-control" placeholder="Đường dẫn" >
                                         @error('index')
                                         <small id="helpId" class="text-danger">{{$message}}</small>
                                         @enderror

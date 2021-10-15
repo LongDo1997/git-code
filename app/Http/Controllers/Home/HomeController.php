@@ -29,7 +29,7 @@ class HomeController extends Controller
             $data['cat_'.$cat->key_name]=Category::query()->where('id',$cat->id)->first();
         }
         if(!empty($data)){
-            $title="Lasadu- Giải Pháp phần mềm chuyên nghiệp";
+            $title="AFD- Trung tâm công nghệ thông tin chuyên nghiệp";
             $keywords="Giải pháp phần mềm, Phần mềm quản lý, gia công phần mềm";
             $description="Giải pháp phần mềm, Phần mềm quản lý, gia công phần mềm";
             return view('home.index',compact('data','keywords','description','title'));
@@ -84,6 +84,10 @@ class HomeController extends Controller
     public function contact()
     {
         return view('home.contact');
+    }
+    public function staff()
+    {
+        return view('home.team');
     }
     public function product()
     {

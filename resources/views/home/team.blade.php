@@ -1,5 +1,5 @@
 @extends('master.home')
-@section('home')
+@section('main')
 <div class="page-title-area bg-4">
         <div class="container">
             <div class="page-title-content">

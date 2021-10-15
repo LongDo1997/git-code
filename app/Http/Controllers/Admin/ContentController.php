@@ -78,6 +78,15 @@ class ContentController extends Controller
     {
         $cat=Category::where('type',1)->where('status',1)->get();
         $data=Content::find($id);
+        if($data->get_cat->key_name=='staff'){
+            return view('admin.content.staffUpdate',compact('data','cat'));
+        }
+        if($data->get_cat->key_name=='client'){
+            return view('admin.content.clientUpdate',compact('data','cat'));
+        }
+        if($data->get_cat->key_name=='contact'){
+            return view('admin.content.contactUpdate',compact('data','cat'));
+        }
         if($data){
             return view('admin.content.update',compact('data','cat'));
         }
@@ -95,6 +104,25 @@ class ContentController extends Controller
     public function update(ContentRequest $request, $id)
     {
         $content=Content::find($id);
+
+        if($content->get_cat->key_name=='staff'){
+            $accounts="Facebook: ".$request->facebook." end_Of_The_Link, ";
+            $accounts.="Instagram: ".$request->insta." end_Of_The_Link, ";
+            $accounts.="Twiter: ".$request->twiter." end_Of_The_Link, ";
+            $accounts.="Another: ".$request->another." end_Of_The_Link, ";
+            $request->merge(['summary'=>$accounts]);
+        }
+        if($content->get_cat->key_name=='contact'){
+            $accounts="Facebook: ".$request->facebook." end_Of_The_Link, ";
+            $accounts.="Instagram: ".$request->insta." end_Of_The_Link, ";
+            $accounts.="Twiter: ".$request->twiter." end_Of_The_Link, ";
+            $accounts.="Another: ".$request->another." end_Of_The_Link, ";
+            $request->merge(['summary'=>$accounts]);
+            $continfo="Email: ".$request->email." end_of_contact, ";
+            $continfo.="Phone: ".$request->phone." end_of_contact, ";
+            $continfo.="Address: ".$request->address." end_of_contact, ";
+            $request->merge(['description'=>$continfo]);
+        }
         $request->merge(['status'=>$request->status=='on'?1:0]);
         if($request->has('my_file')){
             $request -> merge(['images'=> substr($request->my_file,strpos($request->my_file,'public/uploads'))]);

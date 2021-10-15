@@ -1,3 +1,14 @@
+<?php 
+    $accs = explode(' end_Of_The_Link, ',$mainContact->summary);
+    $fblink= !empty($accs[0])?substr($accs[0],strpos($accs[0],'Facebook: ')+10):"";
+    $instalink= !empty($accs[1])?substr($accs[1],strpos($accs[1],'Instagram: ')+11):"";
+    $twiterlink= !empty($accs[2])?substr($accs[2],strpos($accs[2],'Twiter: ')+8):"";
+    $anotherlink= !empty($accs[3])?substr($accs[3],strpos($accs[3],'Another: ')+9):"";
+    $info = explode(' end_of_contact, ',$mainContact->description);
+    $emailInfo= !empty($info[0])?substr($info[0],strpos($info[0],'Email: ')+7):"";
+    $phoneInfo= !empty($info[1])?substr($info[1],strpos($info[1],'Phone: ')+7):"";
+    $addInfo= !empty($info[2])?substr($info[2],strpos($info[2],'Address: ')+9):"";
+?>
 <!doctype html>
 <html lang="zxx">
 
@@ -57,37 +68,36 @@
                         <ul class="header-content-left">
                             <li>
                                 <a
-                                    href="https://templates.envytheme.com/cdn-cgi/l/email-protection#9cf4f9f0f0f3dceff9f7e9b2fff3f1">
+                                    href="https://gmail.com">
                                     <i class="bx bx-envelope"></i>
-                                    Email: <span class="__cf_email__"
-                                        data-cfemail="7b131e1717143b081e100e55181416">[email&#160;protected]</span>
+                                    Email: <span >{{$emailInfo}}</span>
                                 </a>
                             </li>
                             <li>
                                 <i class="bx bx-location-plus"></i>
-                                658 Lane Drive St. California
+                                {{$addInfo}}
                             </li>
                         </ul>
                     </div>
                     <div class="col-lg-6 col-sm-4">
                         <ul class="header-content-right">
                             <li>
-                                <a href="#" target="_blank">
+                                <a href="https://{{$fblink}}" target="_blank">
                                     <i class="bx bxl-facebook"></i>
                                 </a>
                             </li>
                             <li>
-                                <a href="#" target="_blank">
+                                <a href="https://{{$twiterlink}}" target="_blank">
                                     <i class="bx bxl-twitter"></i>
                                 </a>
                             </li>
                             <li>
-                                <a href="#" target="_blank">
+                                <a href="https://{{$anotherlink}}" target="_blank">
                                     <i class="bx bxl-linkedin"></i>
                                 </a>
                             </li>
                             <li>
-                                <a href="#" target="_blank">
+                                <a href="https://{{$instalink}}" target="_blank">
                                     <i class="bx bxl-instagram"></i>
                                 </a>
                             </li>
@@ -115,32 +125,16 @@
                             <div class="collapse navbar-collapse mean-menu">
                                 <ul class="navbar-nav m-auto">
                                     <li class="nav-item">
-                                        <a href="#" class="nav-link active">
+                                        <a href="{{route('home.index')}}" class="nav-link active">
                                             Trang chủ
                                         </a>
                                      
                                     </li>
+                                    @foreach($category as $menu)
                                     <li class="nav-item">
-                                        <a href="about.html" class="nav-link">Giới thiệu</a>
+                                        <a href="{{route($menu->action_name)}}" class="nav-link">{{$menu->name}}</a>
                                     </li>
-                                    <li class="nav-item">
-                                        <a href="#" class="nav-link">
-                                            Dịch vụ
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#" class="nav-link">
-                                            Sản phẩm
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#" class="nav-link">
-                                            Blog
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="contact.html" class="nav-link">Liên hệ</a>
-                                    </li>
+                                    @endforeach
                                 </ul>
 
                                 

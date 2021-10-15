@@ -26,7 +26,8 @@ Route::group(['prefix' => '', 'namespace' => 'Home'], function(){
     Route::get('/'.key_name('about'), 'HomeController@about')->name('home.about');
     Route::get('/'.key_name('service'), 'HomeController@service')->name('home.service');
     Route::get('/'.key_name('service').'/{slug}', 'HomeController@serviceDetail')->name('home.serviceDetail');
-    Route::get('/contact', 'HomeController@contact')->name('home.contact');
+    Route::get('/'.key_name('contact'), 'HomeController@contact')->name('home.contact');
+    Route::get('/'.key_name('staff'), 'HomeController@staff')->name('home.staff');
     Route::post('/postContact', 'HomeController@postContact')->name('home.postContact');
     Route::get('/'.key_name('product'), 'HomeController@product')->name('home.product');
     Route::get('/'.key_name('product').'/{slug}', 'HomeController@productDetail')->name('home.productDetail');

@@ -11,7 +11,7 @@ class Category extends Model
    
     protected $fillable=['id','name','images','type','index','status','meta_keyword','meta_description','action_name','menu_top','key_name','slug'];
     public function get_content(){
-        return $this->hasMany(Content::class,'cat_id','id');
+        return $this->hasMany(Content::class,'cat_id','id')->orderby('index','asc');
     }
     public function get_img(){
         return $this->hasMany(Image::class,'cat_id','id');

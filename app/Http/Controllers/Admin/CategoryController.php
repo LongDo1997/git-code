@@ -46,6 +46,9 @@ class CategoryController extends Controller
     {
         $request->merge(['status'=>$request->status=='on'?1:0]);
         $request->merge(['menu_top'=>$request->menu_top=='on'?1:0]);
+        if(empty($request->action_name)){
+            $request->merge(['menu_top'=>0]);
+        }
         if($request->has('my_file')){
             
             $request -> merge(['images'=> substr($request->my_file,strpos($request->my_file,'public/uploads'))]);
@@ -96,7 +99,9 @@ class CategoryController extends Controller
         $cat=Category::find($id);
         $request->merge(['status'=>$request->status=='on'?1:0]);
         $request->merge(['menu_top'=>$request->menu_top=='on'?1:0]);
-
+        if(empty($request->action_name)){
+            $request->merge(['menu_top'=>0]);
+        }
         if($request->has('my_file')){
             $request -> merge(['images'=> substr($request->my_file,strpos($request->my_file,'public/uploads'))]);
         }
