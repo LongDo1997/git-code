@@ -82,22 +82,22 @@
                     <div class="col-lg-6 col-sm-4">
                         <ul class="header-content-right">
                             <li>
-                                <a href="https://{{$fblink}}" target="_blank">
+                                <a href="{{$fblink}}" target="_blank">
                                     <i class="bx bxl-facebook"></i>
                                 </a>
                             </li>
                             <li>
-                                <a href="https://{{$twiterlink}}" target="_blank">
+                                <a href="{{$twiterlink}}" target="_blank">
                                     <i class="bx bxl-twitter"></i>
                                 </a>
                             </li>
                             <li>
-                                <a href="https://{{$anotherlink}}" target="_blank">
+                                <a href="{{$anotherlink}}" target="_blank">
                                     <i class="bx bxl-linkedin"></i>
                                 </a>
                             </li>
                             <li>
-                                <a href="https://{{$instalink}}" target="_blank">
+                                <a href="{{$instalink}}" target="_blank">
                                     <i class="bx bxl-instagram"></i>
                                 </a>
                             </li>

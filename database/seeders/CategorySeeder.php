@@ -15,25 +15,26 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        // DB::table('categories')->insert([
-        //     'id'=>'23',
-        //     'name' => 'Banner',
-        //     'images' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEpOB50Gf-839DMNoHRlYYBAWP0TN73RHsGg&usqp=CAU',
-        //     'type' => '1',
-        //     'index' => '2',
-        //     'status'=>'1',
-        //     'meta_keyword' => 'Banner' ,
-        //     'meta_description' => '<p>Banner<br></p>',
-        // ],[
-        //     'id'=>'24',
-        //     'name' => 'Dịch vụ',
-        //     'images' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEpOB50Gf-839DMNoHRlYYBAWP0TN73RHsGg&usqp=CAU',
-        //     'type' => '1',
-        //     'index' => '2',
-        //     'status'=>'1',
-        //     'meta_keyword' => 'Dịch vụ của chúng tôi' ,
-        //     'meta_description' => '<p><strong>Ch&uacute;ng t&ocirc;i cung cấp đa dạng c&aacute;c dịch vụ về IT</strong></p>',
-        // ],[
+        DB::table('categories')->insert([
+            'id'=>'23',
+            'name' => 'Banner',
+            'images' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEpOB50Gf-839DMNoHRlYYBAWP0TN73RHsGg&usqp=CAU',
+            'type' => '1',
+            'index' => '2',
+            'status'=>'1',
+            'meta_keyword' => 'Banner' ,
+            'meta_description' => '<p>Banner<br></p>',
+        ],[
+            'id'=>'24',
+            'name' => 'Dịch vụ',
+            'images' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEpOB50Gf-839DMNoHRlYYBAWP0TN73RHsGg&usqp=CAU',
+            'type' => '1',
+            'index' => '2',
+            'status'=>'1',
+            'meta_keyword' => 'Dịch vụ của chúng tôi' ,
+            'meta_description' => '<p><strong>Ch&uacute;ng t&ocirc;i cung cấp đa dạng c&aacute;c dịch vụ về IT</strong></p>',
+        ],
+        // [
         //     'id'=>'25',
         //     'name' => 'Blog',
         //     'images' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEpOB50Gf-839DMNoHRlYYBAWP0TN73RHsGg&usqp=CAU',
@@ -105,6 +106,7 @@ class CategorySeeder extends Seeder
         //     'status'=>'1',
         //     'meta_keyword' => 'Thương hiệu' ,
         //     'meta_description' => '<p>Thương hiệu</p>',
-        // ]);
+        // ]
+    );
     }
 }

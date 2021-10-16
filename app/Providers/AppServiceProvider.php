@@ -30,6 +30,8 @@ class AppServiceProvider extends ServiceProvider
         view()->share([
             'category'=> Category::where('status', 1)->where('menu_top',1)->orderby('index','asc')->get(),
             'mainContact'=>Category::where('status', 1)->where('key_name','contact')->first()->get_content->first(),
+            'footerService'=>Category::where('status', 1)->where('key_name','service')->first()->get_content->take(10),
+            'support'=>Category::where('status', 1)->where('key_name','about')->first()->get_content->take(10),
         ]);
     }
 }

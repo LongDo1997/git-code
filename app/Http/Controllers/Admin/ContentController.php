@@ -121,6 +121,7 @@ class ContentController extends Controller
             $continfo="Email: ".$request->email." end_of_contact, ";
             $continfo.="Phone: ".$request->phone." end_of_contact, ";
             $continfo.="Address: ".$request->address." end_of_contact, ";
+            $continfo.="Map: ".$request->map." end_of_contact, ";
             $request->merge(['description'=>$continfo]);
         }
         $request->merge(['status'=>$request->status=='on'?1:0]);

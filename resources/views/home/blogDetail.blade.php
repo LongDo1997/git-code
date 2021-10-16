@@ -3,20 +3,27 @@
 @section('title',$data->tittle)
 @section('description', $data->meta_description)
 @section('keywords', $data->meta_keyword)
+@foreach($recentData as $dt)
+<style type="text/css">
+.post-wrap .item .bg{{$dt->id}} {
+    background-image: url({{url($dt->images)}});
+
+};
+</style>
+@endforeach
 @section('main')
 
 <div class="page-title-area bg-19">
         <div class="container">
             <div class="page-title-content">
-                <h2>Blog Details</h2>
+                <h2>Chi tiết {{$data->get_cat->name}}</h2>
                 <ul>
                     <li>
-                        <a href="index-2.html">
-                            Home
-                        </a>
+                    <a href="{{route('home.index')}}">Trang chủ</a>
+
                     </li>
-                    <li>Blog</li>
-                    <li class="active">Blog Details</li>
+                    <li>{{$data->get_cat->name}}</li>
+                    <li class="active">{{$data->tittle}}</li>
                 </ul>
             </div>
         </div>
@@ -31,74 +38,16 @@
                         <div class="article-content">
                             <div class="entry-meta">
                                 <ul>
-                                    <li><span>Posted On:</span> <a href="#">May 19, 2020</a></li>
-                                    <li><span>Posted By:</span> <a href="#">John Anderson</a></li>
+                                    <li><span>Ngày đăng bài: </span> <a href="#">{{date('d-m-Y',strtotime($data->created_at))}}</a></li>
                                 </ul>
                             </div>
-                            <h3>DHS Issues Emergency Directive To Prevent Hacking Attack</h3>
+                            <h3>{{$data->tittle}}k</h3>
                             <div class="article-image">
-                                <img src="{{url('public/site')}}/assets/img/blog-details/blog-details.jpg" alt="image">
+                                <img src="{{url($data->images)}}" style="width:100%;height:480px" alt="image">
                             </div>
-                            <p>Quuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quia non
-                                numquam eius modi tempora incidunt ut labore et dolore magnam dolor sit, consectetur qui
-                                ratione voluptatem sequi.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-                                dolor in reprehenderit in sed quia non numquam eius modi tempora incidunt ut labore et
-                                dolore magnam aliquam quaerat labore et dolore magna aliqua.</p>
-                            <blockquote class="flaticon-quote">
-                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellendus aliquid
-                                    praesentium eveniet illum asperiores, quidem, ipsum voluptatum numquam ducimus nisi
-                                    exercitationem dolorum facilis Repellendus aliquid praesentium eveniet illum
-                                    asperiores.</p>
-                            </blockquote>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-                                dolor in reprehenderit in sed quia non numquam eius modi tempora incidunt ut labore et
-                                dolore magnam aliquam quaerat. Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                                veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                consequat. Duis aute irure dolor in reprehenderit in sed quia non numquam eius modi
-                                tempora incidunt ut labore et dolore magnam aliquam quaerat consectetur adipisicing
-                                Lorem ipsum dolor sit amet numquam.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-                                dolor in reprehenderit in sed quia non numquam eius modi tempora incidunt ut labore et
-                                dolore magnam aliquam quaerat ullamco laboris nisi ut aliquip ex ea.</p>
-                            <h3 class="related-posts">Related Post</h3>
-                            <div class="row">
-                                <div class="col-lg-6 col-sm-6">
-                                    <div class="b-d-s-item">
-                                        <a href="blog-details.html">
-                                            <img src="{{url('public/site')}}/assets/img/blog/4.jpg" alt="Image">
-                                            <span class="s-date">
-                                                08 <br> jun
-                                            </span>
-                                            <h3>DHS issues emergency directive to prevent hacking attack</h3>
-                                        </a>
-                                        <p>Lorem ipsum, dolor sit amet consectetur sit adipisicing Consectetur nisi
-                                            pariatur quos.</p>
-                                        <a href="blog-details.html">Read More</a>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-sm-6">
-                                    <div class="b-d-s-item mb-0">
-                                        <a href="blog-details.html">
-                                            <img src="{{url('public/site')}}/assets/img/blog/5.jpg" alt="Image">
-                                            <span class="s-date">
-                                                09 <br> jun
-                                            </span>
-                                            <h3>Drughydrus Add Google Drive To Roughrobin Torjan</h3>
-                                        </a>
-                                        <p>Lorem ipsum, dolor sit amet consectetur sit adipisicing Consectetur nisi
-                                            pariatur quos.</p>
-                                        <a href="blog-details.html">Read More</a>
-                                    </div>
-                                </div>
-                            </div>
+                            {!!$data->description!!}
+                          
+                           
                         </div>
                         <div class="article-footer">
                             <div class="article-tags">
@@ -109,22 +58,22 @@
                                 <ul class="social">
                                     <li>
                                         <a href="#" target="_blank">
-                                            <i class='bx bxl-facebook'></i>
+                                            <i class='bx bxl-facebook pt-2'></i>
                                         </a>
                                     </li>
                                     <li>
                                         <a href="#" target="_blank">
-                                            <i class='bx bxl-twitter'></i>
+                                            <i class='bx bxl-twitter pt-2'></i>
                                         </a>
                                     </li>
                                     <li>
                                         <a href="#" target="_blank">
-                                            <i class='bx bxl-linkedin'></i>
+                                            <i class='bx bxl-linkedin pt-2'></i>
                                         </a>
                                     </li>
                                     <li>
                                         <a href="#" target="_blank">
-                                            <i class='bx bxl-pinterest-alt'></i>
+                                            <i class='bx bxl-pinterest-alt pt-2'></i>
                                         </a>
                                     </li>
                                 </ul>
@@ -259,149 +208,47 @@
                 <div class="col-lg-4 col-md-12">
                     <aside class="widget-area" id="secondary">
                         <div class="widget widget_search">
-                            <h3 class="widget-title">Search Now</h3>
+                            <h3 class="widget-title">Tìm kiếm</h3>
                             <div class="post-wrap">
                                 <form class="search-form">
                                     <label>
-                                        <span class="screen-reader-text">Search for:</span>
-                                        <input type="search" class="search-field" placeholder="Search...">
+                                        <span class="screen-reader-text">Từ khóa:</span>
+                                        <input type="search" class="search-field" placeholder="Từ khoá...">
                                     </label>
                                     <button type="submit"><i class='bx bx-search'></i></button>
                                 </form>
                             </div>
                         </div>
                         <section class="widget widget-peru-posts-thumb">
-                            <h3 class="widget-title">Popular Posts</h3>
+                            <h3 class="widget-title">Bài viết nổi bật</h3>
                             <div class="post-wrap">
+                            @foreach($recentData as $dt)
+
                                 <article class="item">
-                                    <a href="blog-details.html" class="thumb">
-                                        <span class="fullimage cover bg1" role="img"></span>
+                                    <a href="{{route('home.blogDetail',['slug'=>$dt->slug])}}" class="thumb">
+                                        <span class="fullimage cover bg{{$dt->id}}" role="img"></span>
                                     </a>
                                     <div class="info">
-                                        <time datetime="2020-06-30">April 20, 2020</time>
+                                        <time datetime="{{date('d-m-Y',strtotime($data->created_at))}}">{{date('d-m-Y',strtotime($data->created_at))}}</time>
                                         <h4 class="title usmall">
-                                            <a href="blog-details.html">
-                                                Drughydrus Add Google Drive To Roughrobin Torjan
+                                            <a href="{{route('home.blogDetail',['slug'=>$dt->slug])}}">
+                                                {{$dt->tittle}}
                                             </a>
                                         </h4>
                                     </div>
                                     <div class="clear"></div>
                                 </article>
-                                <article class="item">
-                                    <a href="blog-details.html" class="thumb">
-                                        <span class="fullimage cover bg2" role="img"></span>
-                                    </a>
-                                    <div class="info">
-                                        <time datetime="2020-06-30">Jun 21, 2020</time>
-                                        <h4 class="title usmall">
-                                            <a href="blog-details.html">
-                                                DHS Issues Emergency Directive To Prevent Hacking Attack
-                                            </a>
-                                        </h4>
-                                    </div>
-                                    <div class="clear"></div>
-                                </article>
-                                <article class="item">
-                                    <a href="blog-details.html" class="thumb">
-                                        <span class="fullimage cover bg3" role="img"></span>
-                                    </a>
-                                    <div class="info">
-                                        <time datetime="2020-06-30">Jun 22, 2020</time>
-                                        <h4 class="title usmall">
-                                            <a href="blog-details.html">
-                                                Security In A Fragment World Of Workload
-                                            </a>
-                                        </h4>
-                                    </div>
-                                    <div class="clear"></div>
-                                </article>
-                                <article class="item">
-                                    <a href="blog-details.html" class="thumb">
-                                        <span class="fullimage cover bg4" role="img"></span>
-                                    </a>
-                                    <div class="info">
-                                        <time datetime="2020-06-30">Jun 23, 2020</time>
-                                        <h4 class="title usmall">
-                                            <a href="blog-details.html">
-                                                Secure Managed IT Cloud Security
-                                            </a>
-                                        </h4>
-                                    </div>
-                                    <div class="clear"></div>
-                                </article>
+                            @endforeach
                             </div>
                         </section>
-                        <section class="widget widget_categories">
-                            <h3 class="widget-title">Archives</h3>
-                            <div class="post-wrap">
-                                <ul>
-                                    <li>
-                                        <a href="#">January <span>2020</span></a>
-                                    </li>
-                                    <li>
-                                        <a href="#">February <span>2020</span></a>
-                                    </li>
-                                    <li>
-                                        <a href="#">March <span>2020</span></a>
-                                    </li>
-                                    <li>
-                                        <a href="#">April <span>2020</span></a>
-                                    </li>
-                                    <li>
-                                        <a href="#">May <span>2020</span></a>
-                                    </li>
-                                    <li>
-                                        <a href="#">June <span>2020</span></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </section>
-                        <section class="widget widget_categories">
-                            <h3 class="widget-title">Categories</h3>
-                            <div class="post-wrap">
-                                <ul>
-                                    <li>
-                                        <a href="#">Blockchain <span>(10)</span></a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Cyber security <span>(20)</span></a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Cybercrime <span>(10)</span></a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Global news <span>(12)</span></a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Ransomware <span>(16)</span></a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Whitepapers <span>(17)</span></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </section>
-                        <section class="widget widget_meta">
-                            <h3 class="widget-title">Meta</h3>
-                            <div class="post-wrap">
-                                <ul>
-                                    <li><a href="log-in.html">Log in</a></li>
-                                    <li><a href="#">Entries <abbr title="Really Simple Syndication">RSS</abbr></a></li>
-                                    <li><a href="#">Comments <abbr title="Really Simple Syndication">RSS</abbr></a></li>
-                                    <li><a href="#">WordPress.org</a></li>
-                                </ul>
-                            </div>
-                        </section>
+                      
                         <section class="widget widget_tag_cloud">
                             <h3 class="widget-title">Tags</h3>
                             <div class="post-wrap">
                                 <div class="tagcloud">
-                                    <a href="#">Blockchain (3)</a>
-                                    <a href="#">Cyber security (3)</a>
-                                    <a href="#">Cybercrime (2)</a>
-                                    <a href="#">Global news (2)</a>
-                                    <a href="#">Ransomware (1)</a>
-                                    <a href="#">Whitepapers (2) </a>
+                                @foreach($tag as $t)
+                                    <a href="#">{{$t}}</a>
+                                @endforeach
                                 </div>
                             </div>
                         </section>

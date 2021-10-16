@@ -1,163 +1,76 @@
+<?php 
+    $accs = explode(' end_Of_The_Link, ',$mainContact->summary);
+    $fblink= !empty($accs[0])?substr($accs[0],strpos($accs[0],'Facebook: ')+10):"";
+    $instalink= !empty($accs[1])?substr($accs[1],strpos($accs[1],'Instagram: ')+11):"";
+    $twiterlink= !empty($accs[2])?substr($accs[2],strpos($accs[2],'Twiter: ')+8):"";
+    $anotherlink= !empty($accs[3])?substr($accs[3],strpos($accs[3],'Another: ')+9):"";
+    $info = explode(' end_of_contact, ',$mainContact->description);
+    $emailInfo= !empty($info[0])?substr($info[0],strpos($info[0],'Email: ')+7):"";
+    $phoneInfo= !empty($info[1])?substr($info[1],strpos($info[1],'Phone: ')+7):"";
+    $addInfo= !empty($info[2])?substr($info[2],strpos($info[2],'Address: ')+9):"";
+    $mapInfo= !empty($info[2])?substr($info[3],strpos($info[3],'Map: ')+5):"";
+?>
 <footer class="footer-top-area pt-100 pb-70 jarallax">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-md-6">
+                <div class="col-lg-6 col-md-6">
                     <div class="single-widget contact">
-                        <h3>Contact Us</h3>
+                        <h3>{{$mainContact->get_cat->meta_keyword}}</h3>
                         <ul>
                             <li class="pl-0">
-                                <a href="tel:Phone:+892-569-756">
+                                <a href="tel:Phone:{{$phoneInfo}}">
                                     <i class="bx bx-phone-call"></i>
-                                    <span>Hotline:</span>
-                                    Phone: +892-569-756
+                                    <span>Hotline: {{$phoneInfo}}</span>
                                 </a>
                             </li>
                             <li class="pl-0">
-                                <a
-                                    href="https://templates.envytheme.com/cdn-cgi/l/email-protection#5b333e3737341b283e302e75383436">
+                                <a href="https://templates.envytheme.com/cdn-cgi/l/email-protection#5b333e3737341b283e302e75383436">
                                     <i class="bx bx-envelope"></i>
-                                    <span>Email:</span>
-                                    <span class="__cf_email__"
-                                        data-cfemail="b5ddd0d9d9daf5c6d0dec09bd6dad8">[email&#160;protected]</span>
+                                    <span>Email: {{$emailInfo}}</span>
                                 </a>
                             </li>
                             <li>
                                 <i class="bx bx-location-plus"></i>
-                                <span>Address:</span>
-                                658 Lane Drive st Riverside. California
+                                <span>Địa chỉ: {{$mainContact->tittle}} - {{$addInfo}}</span>
                             </li>
+                           
+                        </ul>
+                    </div>
+                    <div >
+                        <iframe src="{{$mapInfo}}" style="border:1" width="100%"></iframe>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="single-widget">
+                        <h3>Dịch vụ</h3>
+                        <ul>
+                            @foreach($footerService as $fs)
+                            <li>
+                                <a href="{{route('home.serviceDetail',$fs->slug)}}">
+                                    <i class="bx bx-chevrons-right"></i>
+                                    {{$fs->tittle}}
+                                </a>
+                            </li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <div class="single-widget">
-                        <h3>Services Link</h3>
+                        <h3>Hỗ trợ</h3>
                         <ul>
+                            @foreach($support as $sp)
                             <li>
-                                <a href="#">
+                                <a href="{{route('home.about')}}">
                                     <i class="bx bx-chevrons-right"></i>
-                                    Web Site Protection
+                                    {{$sp->tittle}}
                                 </a>
                             </li>
-                            <li>
-                                <a href="#">
-                                    <i class="bx bx-chevrons-right"></i>
-                                    Hosting & Server Guard
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="bx bx-chevrons-right"></i>
-                                    Web Administrator
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="bx bx-chevrons-right"></i>
-                                    Conducting Training
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="bx bx-chevrons-right"></i>
-                                    GRPS Smart Protection
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="bx bx-chevrons-right"></i>
-                                    Security App
-                                </a>
-                            </li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="single-widget">
-                        <h3>Support & Help</h3>
-                        <ul>
-                            <li>
-                                <a href="#">
-                                    <i class="bx bx-chevrons-right"></i>
-                                    Support Forum
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="bx bx-chevrons-right"></i>
-                                    FAQ Questions
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="bx bx-chevrons-right"></i>
-                                    24/7 Support for Help
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="bx bx-chevrons-right"></i>
-                                    Counseling
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="bx bx-chevrons-right"></i>
-                                    Protection
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="bx bx-chevrons-right"></i>
-                                    Security
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="single-widget">
-                        <h3>Quick Links</h3>
-                        <ul>
-                            <li>
-                                <a href="#">
-                                    <i class="bx bx-chevrons-right"></i>
-                                    Security
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="bx bx-chevrons-right"></i>
-                                    Protection
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="bx bx-chevrons-right"></i>
-                                    Antivirus Packages
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="bx bx-chevrons-right"></i>
-                                    Security App
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="bx bx-chevrons-right"></i>
-                                    Website Security
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="bx bx-chevrons-right"></i>
-                                    Digital Security
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+                
             </div>
         </div>
     </footer>
@@ -169,23 +82,11 @@
                 <div class="col-lg-6">
                     <div class="copy-right">
                         <p>
-                            Copyright <i class="bx bx-copyright"></i>2021 Seku. Designed By
-                            <a href="https://envytheme.com/" target="blank">EnvyTheme</a>
+                            @2021 AFD. Thiết kế bởi: Nhóm sinh viên BKAP
                         </p>
                     </div>
                 </div>
-                <div class="col-lg-6">
-                    <div class="condition-privacy">
-                        <ul>
-                            <li>
-                                <a href="terms-conditions.html">Terms & Condition</a>
-                            </li>
-                            <li>
-                                <a href="privacy-policy.html">Privacy Policy</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+                
             </div>
         </div>
     </footer>
@@ -229,7 +130,7 @@
     <script src="{{url('public/site')}}/assets/js/ajaxchimp.min.js"></script>
 
     <script src="{{url('public/site')}}/assets/js/custom.js"></script>
-    @yeild('js')
+    @yield('js')
 </body>
 
 <!-- Mirrored from templates.envytheme.com/seku/default/index-5.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 11 Oct 2021 14:01:23 GMT -->

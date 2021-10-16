@@ -8,6 +8,7 @@
     $emailInfo= !empty($info[0])?substr($info[0],strpos($info[0],'Email: ')+7):"";
     $phoneInfo= !empty($info[1])?substr($info[1],strpos($info[1],'Phone: ')+7):"";
     $addInfo= !empty($info[2])?substr($info[2],strpos($info[2],'Address: ')+9):"";
+    $mapInfo= !empty($info[2])?substr($info[3],strpos($info[3],'Map: ')+5):"";
 ?>
 @extends('master.admin')
 @section('main')
@@ -60,6 +61,10 @@
                             <div class="form-group">
                                 <label for="">Địa chỉ</label>
                                 <input type="text" name="address" id="" class="form-control" value="{{$addInfo}}" placeholder="Nhập link" aria-describedby="helpId">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Đường dẫn trên Google Map</label>
+                                <input type="text" name="map" id="" class="form-control" value="{{$mapInfo}}" placeholder="Nhập link" aria-describedby="helpId">
                             </div>
                        </div>
                        <div class="col-1"></div>

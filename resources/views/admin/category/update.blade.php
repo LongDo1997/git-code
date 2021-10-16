@@ -3,7 +3,7 @@
     <div class="container">
         <div class="card">
             <div class="card-header">
-                <h1>Thêm mới danh mục</h1>
+                <h1>Điều chỉnh danh mục</h1>
             </div>
             <div class="card-body">
                <form action="{{route('category.update',$data->id)}}" method="post" enctype="multipart/form-data">

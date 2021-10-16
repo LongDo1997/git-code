@@ -1,140 +1,76 @@
 @extends('master.home')
-@section('main')
 @section('title',$data->tittle)
 @section('description', $data->meta_description)
 @section('keywords', $data->meta_keyword)
+@section('main')
 
-<div class="inner-banner">
-    <div class="container">
-        <div class="inner-title text-center">
-            <h3>Chi tiết {{$data->get_cat->name}} </h3>
-            <ul>
-                <li>
+<div class="page-title-area bg-23">
+        <div class="container">
+            <div class="page-title-content">
+                <h2>Chi tiết {{$data->get_cat->name}}</h2>
+                <ul>
+                    <li>
                     <a href="{{route('home.index')}}">Trang chủ</a>
-                </li>
-                <li>
-                    <i class='bx bx-chevrons-right'></i>
-                </li>
-                <li>{{$data->get_cat->name}} </li>
-                <li>
-                    <i class='bx bx-chevrons-right'></i>
-                </li>
-                <li>{{$data->tittle}} </li>
-            </ul>
+
+                    </li>
+                    <li>{{$data->get_cat->name}}</li>
+                    <li class="active">{{$data->tittle}}</li>
+                </ul>
+            </div>
         </div>
-    </div>
-    <div class="inner-shape">
-        <img src="{{url('public/site')}}/assets/images/shape/inner-shape.png" alt="Images">
-    </div>
 </div>
 
 
-<div class="case-details-area pt-100 pb-70">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8">
-                <div class="case-article">
-                    <div class="case-article-img">
-                        <img src="{{url($data->images)}}" style="width:100%;height:400px" alt="Images">
-                    </div>
-                    <div class="case-article-content" style="font-si">
+    <section class="blog-details-area ptb-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-12">
+                    <div class="services-details">
+                        <h3>{{$data->tittle}}</h3>
+                        <img src="{{url($data->images)}}"style="width:100%;height:360px" alt="Image">
                         {!!$data->description!!}
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="side-bar-area">
-                    <div class="side-bar-widget">
-                        <h3 class="title">Dự án gần đây</h3>
-                        <div class="side-bar-categories">
-                            <ul>
+                <div class="col-lg-4 col-md-12">
+                    <aside class="widget-area" id="secondary">
+                        <div class="widget widget_search">
+                            <h3 class="widget-title">Tìm  kiếm</h3>
+                            <div class="post-wrap">
+                                <form class="search-form">
+                                    <label>
+                                        <span class="screen-reader-text">Từ khóa:</span>
+                                        <input type="search" class="search-field" placeholder="Từ khóa">
+                                    </label>
+                                    <button type="submit"><i class='bx bx-search'></i></button>
+                                </form>
+                            </div>
+                        </div>
+                        <section class="widget widget_categories">
+                            <h3 class="widget-title">Dự án gần đây</h3>
+                            <div class="post-wrap">
+                                <ul>
                                 @foreach($recentData as $dt)
-                                <li>
-                                    <div class="line-circle"></div>
-                                    <a href="{{route('home.productDetail',['slug'=>$dt->slug])}}" target="_blank">{{$dt->tittle}}</a>
-                                </li>
+                                    <li>
+                                        <a href="{{route('home.productDetail',['slug'=>$dt->slug])}}">{{$dt->tittle}}</a>
+                                    </li>
                                 @endforeach
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="side-bar-widget">
-                        <h3 class="title">Tag Cloud</h3>
-                        <ul class="side-bar-widget-tag">
-                            @foreach($tag as $t)
-                            <li><a href="{{route('home.product')}}" target="_blank">{{$t}}</a></li>
-                            @endforeach
-                        </ul>
-                    </div>
-                    <div class="side-bar-widget">
-                        <h3 class="title">Bộ sưu tập</h3>
-                        <ul class="blog-gallery">
-                            <li>
-                                <a href="https://www.instagram.com/" target="_blank">
-                                    <img src="{{url('public/site')}}/{{url('public/site')}}/assets/images/blog/blog-small-img1.jpg" alt="image">
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://www.instagram.com/" target="_blank">
-                                    <img src="{{url('public/site')}}/{{url('public/site')}}/assets/images/blog/blog-small-img2.jpg" alt="image">
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://www.instagram.com/" target="_blank">
-                                    <img src="{{url('public/site')}}/{{url('public/site')}}/assets/images/blog/blog-small-img3.jpg" alt="image">
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://www.instagram.com/" target="_blank">
-                                    <img src="{{url('public/site')}}/{{url('public/site')}}/assets/images/blog/blog-small-img4.jpg" alt="image">
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://www.instagram.com/" target="_blank">
-                                    <img src="{{url('public/site')}}/{{url('public/site')}}/assets/images/blog/blog-small-img5.jpg" alt="image">
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://www.instagram.com/" target="_blank">
-                                    <img src="{{url('public/site')}}/{{url('public/site')}}/assets/images/blog/blog-small-img6.jpg" alt="image">
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- <div class="side-bar-widget">
-                        <h3 class="title">Archive</h3>
-                        <div class="side-bar-categories">
-                            <ul>
-                                <li>
-                                    <div class="line-circle"></div>
-                                    <a href="case-details.html" target="_blank">Design<span>[70]</span></a>
-                                </li>
-                                <li>
-                                    <div class="line-circle"></div>
-                                    <a href="case-details.html" target="_blank">Business<span>[24]</span></a>
-                                </li>
-                                <li>
-                                    <div class="line-circle"></div>
-                                    <a href="case-details.html" target="_blank">Development<span>[08]</span></a>
-                                </li>
-                                <li>
-                                    <div class="line-circle"></div>
-                                    <a href="case-details.html" target="_blank">Technology <span>[17]</span></a>
-                                </li>
-                                <li>
-                                    <div class="line-circle"></div>
-                                    <a href="case-details.html" target="_blank">Startup <span>[20]</span></a>
-                                </li>
-                                <li>
-                                    <div class="line-circle"></div>
-                                    <a href="case-details.html" target="_blank">Marketing Growth <span>[13]</span></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div> -->
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="widget widget_tag_cloud">
+                            <h3 class="widget-title">Tags</h3>
+                            <div class="post-wrap">
+                                <div class="tagcloud">
+                                @foreach($tag as $t)
+                                    <a href="#">{{$t}}</a>
+                                @endforeach
+                                </div>
+                            </div>
+                        </section>
+                    </aside>
                 </div>
             </div>
         </div>
-    </div>
-</div>
+    </section>
 
 @stop()

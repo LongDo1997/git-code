@@ -4,14 +4,13 @@
 <div class="page-title-area bg-22">
         <div class="container">
             <div class="page-title-content">
-                <h2>Contact</h2>
+                <h2>{{$data['cat_contact']->name}}</h2>
                 <ul>
                     <li>
-                        <a href="index-2.html">
-                            Home
-                        </a>
+                    <a href="{{route('home.index')}}">Trang chủ</a>
+
                     </li>
-                    <li class="active">Contact</li>
+                    <li class="active">{{$data['cat_contact']->name}}</li>
                 </ul>
             </div>
         </div>
@@ -21,42 +20,35 @@
     <section class="contact-info-area">
         <div class="container-fluid">
             <div class="row">
+                @foreach($data['contact'] as $dt)
+                <?php 
+                    // $accs = explode(' end_Of_The_Link, ',$dt->summary);
+                    // $fblink= !empty($accs[0])?substr($accs[0],strpos($accs[0],'Facebook: ')+10):"";
+                    // $instalink= !empty($accs[1])?substr($accs[1],strpos($accs[1],'Instagram: ')+11):"";
+                    // $twiterlink= !empty($accs[2])?substr($accs[2],strpos($accs[2],'Twiter: ')+8):"";
+                    // $anotherlink= !empty($accs[3])?substr($accs[3],strpos($accs[3],'Another: ')+9):"";
+                    $info = explode(' end_of_contact, ',$dt->description);
+                    $emailInfo= !empty($info[0])?substr($info[0],strpos($info[0],'Email: ')+7):"";
+                    $phoneInfo= !empty($info[1])?substr($info[1],strpos($info[1],'Phone: ')+7):"";
+                    $addInfo= !empty($info[2])?substr($info[2],strpos($info[2],'Address: ')+9):"";
+                    $mapInfo= !empty($info[2])?substr($info[3],strpos($info[3],'Map: ')+5):"";
+                ?>
                 <div class="col-lg-3 p-0">
                     <div class="single-contact-info">
                         <i class="bx bx-location-plus"></i>
-                        <h3>New York</h3>
-                        <p>88 Flower Avenue. Kingdom St. New York</p>
-                        <a href="https://templates.envytheme.com/cdn-cgi/l/email-protection#caa2afa6a6a58ab9afa1bf">Email:
-                            <span class="__cf_email__"
-                                data-cfemail="c9a0a7afa689baaca2bce7aaa6a4">[email&#160;protected]</span></a>
-                        <a href="tel:+822456974">+822456974</a>
+                        <h3>{{$dt->tittle}}</h3>
+                        <p>{{$addInfo}}</p>
+                        <a href="">Email:
+                            <span class="__cf_email__">{{$emailInfo}}</span></a>
+                        <a href="tel:+822456974">{{$phoneInfo}}</a>
                     </div>
                 </div>
                 <div class="col-lg-3 p-0">
                     <div class="single-contact-map">
-                        <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.1583091352!2d-74.11976373946234!3d40.69766374859258!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sbd!4v1588019781257!5m2!1sen!2sbd"
-                            style="border:0;"></iframe>
+                        <iframe src="{{$mapInfo}}"style="border:0;"></iframe>
                     </div>
                 </div>
-                <div class="col-lg-3 p-0">
-                    <div class="single-contact-info">
-                        <i class="bx bx-location-plus"></i>
-                        <h3>California</h3>
-                        <p>658 Lane Drive st Riverside. California</p>
-                        <a href="https://templates.envytheme.com/cdn-cgi/l/email-protection#0b636e6767644b786e607e">Email:
-                            <span class="__cf_email__"
-                                data-cfemail="29414c454546695a4c425c074a4644">[email&#160;protected]</span></a>
-                        <a href="tel:+892-569-756">+892-569-756</a>
-                    </div>
-                </div>
-                <div class="col-lg-3 p-0">
-                    <div class="single-contact-map">
-                        <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6509156.5834578!2d-123.79616103953882!3d37.1931243309143!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fb9fe5f285e3d%3A0x8b5109a227086f55!2sCalifornia%2C%20USA!5e0!3m2!1sen!2sbd!4v1591218371520!5m2!1sen!2sbd"
-                            style="border:0;"></iframe>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
@@ -69,54 +61,66 @@
                     <div class="contact-wrap">
                         <div class="contact-form">
                             <div class="section-title">
-                                <span class="top-title">Contact Us</span>
-                                <h2>Drop us a message for any query</h2>
-                                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque quibusdam deleniti
-                                    porro praesentium. Aliquam minus quisquam velit in at nam.</p>
+                                <span class="top-title">{{$data['cat_contact']->meta_keyword}}</span>
+                                {!!$data['cat_contact']->meta_description!!}
                             </div>
-                            <form id="contactForm">
+                            <form id=""  method="POST" action="{{route('home.postContact')}}" enctype="multipart/form-data">
+                                @csrf
                                 <div class="row">
                                     <div class="col-lg-6 col-sm-6">
-                                        <div class="form-group">
-                                            <input type="text" name="name" id="name" class="form-control" required
-                                                data-error="Please enter your name" placeholder="Your Name">
+                                        <div class="form-group mb-4">
+                                            <input type="text" name="name" id="name" class="form-control" 
+                                            value="{{old('name')}}" placeholder="Tên của bạn" required data-error="Xin mời nhập tên của bạn">
+                                            @error('name')
+                                                <small class="font-weight-bolder help-block with-errors"><span class="text-danger font-italic">{{$message}}</span></small>
+                                            @enderror
                                             <div class="help-block with-errors"></div>
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-sm-6">
-                                        <div class="form-group">
-                                            <input type="email" name="email" id="email" class="form-control" required
-                                                data-error="Please enter your email" placeholder="Your Email">
+                                        <div class="form-group mb-4">
+                                            <input type="text" name="email" id="email" class="form-control" 
+                                            value="{{old('email')}}" placeholder="Email" required data-error="Email không được để trống">
+                                            @error('email')
+                                                <small class="font-weight-bolder help-block with-errors"><span class="text-danger font-italic">{{$message}}</span></small>
+                                            @enderror
                                             <div class="help-block with-errors"></div>
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-sm-6">
-                                        <div class="form-group">
-                                            <input type="text" name="phone_number" id="phone_number" required
-                                                data-error="Please enter your number" class="form-control"
-                                                placeholder="Your Phone">
+                                        <div class="form-group mb-4">
+                                            <input type="text" name="phone" id="phone_number" class="form-control" required data-error="Số điện thoại không được để trống"
+                                            value="{{old('phone')}}" placeholder="Số điện thoại">
+                                            @error('phone')
+                                                <small class="font-weight-bolder help-block with-errors"><span class="text-danger font-italic">{{$message}}</span></small>
+                                            @enderror
                                             <div class="help-block with-errors"></div>
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-sm-6">
-                                        <div class="form-group">
-                                            <input type="text" name="msg_subject" id="msg_subject" class="form-control"
-                                                required data-error="Please enter your subject"
-                                                placeholder="Your Subject">
+                                        <div class="form-group mb-4">
+                                            <input type="text" name="subject" id="msg_subject" class="form-control" required data-error="Tiêu đề không được để trống"
+                                            value="{{old('subject')}}" placeholder="Tiêu đề">
+                                            @error('subject')
+                                                <small class="font-weight-bolder help-block with-errors"><span class="text-danger font-italic">{{$message}}</span></small>
+                                            @enderror
                                             <div class="help-block with-errors"></div>
                                         </div>
                                     </div>
                                     <div class="col-lg-12 col-md-12">
-                                        <div class="form-group">
-                                            <textarea name="message" class="form-control" id="message" cols="30"
-                                                rows="8" required data-error="Write your message"
-                                                placeholder="Your Message"></textarea>
+                                        <div class="form-group mb-4">
+                                            <textarea name="message" class="form-control" id="message" cols="30" required data-error="Nội dung không được để trống"
+                                                rows="8" 
+                                                placeholder="Nội dung">{{old('message')}}</textarea>
+                                            @error('message')
+                                                <small class="font-weight-bolder help-block with-errors"><span class="text-danger font-italic">{{$message}}</span></small>
+                                            @enderror
                                             <div class="help-block with-errors"></div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-12 col-md-12">
+                                    <div class="col-lg-12 col-md-12 text-center">
                                         <button type="submit" class="default-btn page-btn">
-                                            Send Message
+                                            GỬI TIN NHẮN
                                         </button>
                                         <div id="msgSubmit" class="h3 text-center hidden"></div>
                                         <div class="clearfix"></div>
