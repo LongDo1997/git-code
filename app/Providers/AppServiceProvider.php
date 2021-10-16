@@ -29,9 +29,21 @@ class AppServiceProvider extends ServiceProvider
         Paginator::useBootstrap();
         view()->share([
             'category'=> Category::where('status', 1)->where('menu_top',1)->orderby('index','asc')->get(),
-            'mainContact'=>Category::where('status', 1)->where('key_name','contact')->first()->get_content->first(),
-            'footerService'=>Category::where('status', 1)->where('key_name','service')->first()->get_content->take(10),
-            'support'=>Category::where('status', 1)->where('key_name','about')->first()->get_content->take(10),
         ]);
+        if(Category::where('key_name','contact')->first()->status==1){
+        view()->share([
+            'mainContact'=>Category::where('status', 1)->where('key_name','contact')->first()->get_content->first(),
+        ]);
+        }
+        if(Category::where('key_name','service')->first()->status==1){
+            view()->share([
+                'footerService'=>Category::where('status', 1)->where('key_name','service')->first()->get_content->take(10),
+            ]);
+        }
+        if(Category::where('key_name','about')->first()->status==1){
+            view()->share([
+                'support'=>Category::where('status', 1)->where('key_name','about')->first()->get_content->take(10),
+            ]);
+        }
     }
 }

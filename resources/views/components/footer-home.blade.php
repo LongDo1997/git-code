@@ -1,4 +1,5 @@
 <?php 
+if(isset($mainContact)){
     $accs = explode(' end_Of_The_Link, ',$mainContact->summary);
     $fblink= !empty($accs[0])?substr($accs[0],strpos($accs[0],'Facebook: ')+10):"";
     $instalink= !empty($accs[1])?substr($accs[1],strpos($accs[1],'Instagram: ')+11):"";
@@ -9,11 +10,14 @@
     $phoneInfo= !empty($info[1])?substr($info[1],strpos($info[1],'Phone: ')+7):"";
     $addInfo= !empty($info[2])?substr($info[2],strpos($info[2],'Address: ')+9):"";
     $mapInfo= !empty($info[2])?substr($info[3],strpos($info[3],'Map: ')+5):"";
+}
 ?>
 <footer class="footer-top-area pt-100 pb-70 jarallax">
         <div class="container">
             <div class="row">
+                @if(isset($mainContact))
                 <div class="col-lg-6 col-md-6">
+                    
                     <div class="single-widget contact">
                         <h3>{{$mainContact->get_cat->meta_keyword}}</h3>
                         <ul>
@@ -39,7 +43,10 @@
                     <div >
                         <iframe src="{{$mapInfo}}" style="border:1" width="100%"></iframe>
                     </div>
+                
                 </div>
+                @endif
+                @if(isset($footerService))
                 <div class="col-lg-3 col-md-6">
                     <div class="single-widget">
                         <h3>Dịch vụ</h3>
@@ -55,6 +62,8 @@
                         </ul>
                     </div>
                 </div>
+                @endif
+                @if(isset($support))
                 <div class="col-lg-3 col-md-6">
                     <div class="single-widget">
                         <h3>Hỗ trợ</h3>
@@ -70,7 +79,7 @@
                         </ul>
                     </div>
                 </div>
-                
+                @endif
             </div>
         </div>
     </footer>

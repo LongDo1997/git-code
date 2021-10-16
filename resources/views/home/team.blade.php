@@ -1,4 +1,7 @@
 @extends('master.home')
+@section('title',$data['cat_staff']->name)
+@section('description', $data['cat_staff']->meta_description)
+@section('keywords', $data['cat_staff']->meta_keyword)
 @section('main')
 <div class="page-title-area bg-4">
         <div class="container">

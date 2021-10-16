@@ -1,4 +1,5 @@
 <?php 
+if(isset($mainContact)){
     $accs = explode(' end_Of_The_Link, ',$mainContact->summary);
     $fblink= !empty($accs[0])?substr($accs[0],strpos($accs[0],'Facebook: ')+10):"";
     $instalink= !empty($accs[1])?substr($accs[1],strpos($accs[1],'Instagram: ')+11):"";
@@ -8,6 +9,7 @@
     $emailInfo= !empty($info[0])?substr($info[0],strpos($info[0],'Email: ')+7):"";
     $phoneInfo= !empty($info[1])?substr($info[1],strpos($info[1],'Phone: ')+7):"";
     $addInfo= !empty($info[2])?substr($info[2],strpos($info[2],'Address: ')+9):"";
+}
 ?>
 <!doctype html>
 <html lang="zxx">
@@ -48,7 +50,7 @@
 
     <link rel="icon" type="image/png" href="{{url('public/site')}}/assets/img/favicon.png">
     @yield('css')
-    <title>Seku - Cyber Security Company HTML Template</title>
+    <title>AFD - Công ty hỗ trợ dịch vụ công nghệ thông tin chuyên nghiệp</title>
 </head>
 
 <body>
@@ -64,6 +66,7 @@
         <div class="top-header-area">
             <div class="container-fluid">
                 <div class="row align-items-center">
+                    @if(isset($mainContact))
                     <div class="col-lg-6 col-sm-8">
                         <ul class="header-content-left">
                             <li>
@@ -103,6 +106,7 @@
                             </li>
                         </ul>
                     </div>
+                    @endif
                 </div>
             </div>
         </div>
