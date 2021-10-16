@@ -129,14 +129,14 @@ if(isset($mainContact)){
                             <div class="collapse navbar-collapse mean-menu">
                                 <ul class="navbar-nav m-auto">
                                     <li class="nav-item">
-                                        <a href="{{route('home.index')}}" class="nav-link active">
+                                        <a href="{{route('home.index')}}" class="nav-link {{Route::current()->getName()=='home.index'?'active':''}}">
                                             Trang chủ
                                         </a>
                                      
                                     </li>
                                     @foreach($category as $menu)
                                     <li class="nav-item">
-                                        <a href="{{route($menu->action_name)}}" class="nav-link">{{$menu->name}}</a>
+                                        <a href="{{route($menu->action_name)}}" class="nav-link {{strpos(Route::current()->getName(),$menu->key_name)!=false?'active':''}}">{{$menu->name}}</a>
                                     </li>
                                     @endforeach
                                 </ul>
