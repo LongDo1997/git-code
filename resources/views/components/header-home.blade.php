@@ -62,7 +62,7 @@ if(isset($mainContact)){
     </div>
 
 
-    <header class="header-area fixed-top">
+    <header class="header-area ">
         <div class="top-header-area">
             <div class="container-fluid">
                 <div class="row align-items-center">
@@ -116,18 +116,18 @@ if(isset($mainContact)){
 
                 <div class="mobile-nav">
                     <a href="index-2.html" class="logo">
-                        <img src="{{url('public/site')}}/assets/img/logo.png" alt="Logo">
+                        <img src="{{url('public/site')}}/assets/img/logo.png"  width="130px" height = "100px" alt="Logo">
                     </a>
                 </div>
 
                 <div class="main-nav">
                     <nav class="navbar navbar-expand-md">
-                        <div class="container-fluid">
-                            <a class="navbar-brand" href="index-2.html">
-                                <img src="{{url('public/site')}}/assets/img/logo.png" alt="Logo">
+                        <div class="container" >
+                            <a class="navbar-brand" href="{{route('home.index')}}">
+                                <img src="{{url('public/site')}}/assets/img/logo.png" width="130px" height = "100px" alt="Logo">
                             </a>
-                            <div class="collapse navbar-collapse mean-menu">
-                                <ul class="navbar-nav m-auto">
+                            <div class="collapse navbar-collapse mean-menu " style="width:70%">
+                                <ul class="navbar-nav m-auto container-fluid" style="justify-content: flex-end;"  >
                                     <li class="nav-item">
                                         <a href="{{route('home.index')}}" class="nav-link {{Route::current()->getName()=='home.index'?'active':''}}">
                                             Trang chủ
@@ -135,7 +135,7 @@ if(isset($mainContact)){
                                      
                                     </li>
                                     @foreach($category as $menu)
-                                    <li class="nav-item">
+                                    <li class="nav-item ">
                                         <a href="{{route($menu->action_name)}}" class="nav-link {{strpos(Route::current()->getName(),$menu->key_name)!=false?'active':''}}">{{$menu->name}}</a>
                                     </li>
                                     @endforeach
